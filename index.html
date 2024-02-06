@@ -1,0 +1,54 @@
+<!--
+// v0 by Vercel.
+// https://v0.dev/t/TvQ6Pe2Gwtm
+-->
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+      function replaceText() {
+        const characters = "素希爱灯猫睦祥初海喵";
+        const element = document.getElementById("cp");
+        let randomChars = element.textContent;
+        while (randomChars === element.textContent) {
+          randomChars = getRandomChars(characters, 2);
+        }
+        element.textContent = randomChars;
+      }
+
+      function getRandomChars(characters, count) {
+        let randomChars = "";
+        for (let i = 0; i < count; i++) {
+          let randomIndex = Math.floor(Math.random() * characters.length);
+          while (i === 1 && characters[randomIndex] === "海") {
+            randomIndex = Math.floor(Math.random() * characters.length);
+          }
+          while (i === 1 && characters[randomIndex] === randomChars[0]) {
+            randomIndex = Math.floor(Math.random() * characters.length);
+          }
+          randomChars += characters[randomIndex];
+        }
+        return randomChars;
+      }
+    </script>
+  </head>
+  <body>
+    <main class="flex flex-col items-center justify-between h-screen p-4">
+      <header class="w-full text-center py-4">
+        <h1 class="text-2xl md:text-4xl font-bold">看mygo看的</h1>
+      </header>
+      <button
+        class="inline-flex items-center justify-center whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 mt-10 text-lg font-bold bg-green-500 text-white py-2 px-4 rounded-lg shadow-md hover:bg-green-600"
+        onclick="replaceText()"
+      >
+        一个想法不一定对
+      </button>
+      <div class="flex items-center justify-center h-full">
+        <h1 class="text-6xl font-bold text-center mb-10" id="cp" />
+      </div>
+    </main>
+  </body>
+</html>
